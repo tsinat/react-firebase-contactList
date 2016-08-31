@@ -1,7 +1,7 @@
 var Dispatcher = require('flux').Dispatcher;
 var assign = require('object-assign');
 
-var AppDispatcher = assing(new Dispatcher(), {
+var AppDispatcher = assign(new Dispatcher(), {
     handleViewAction: function(action){
         var payload = {
             source: 'VIEW_ACTION',

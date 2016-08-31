@@ -1,15 +1,15 @@
-var AppActions = require('../actions/AppActions');
 var Firebase = require('firebase');
+var AppActions = require('../actions/AppActions');
 
 module.exports = {
     saveContact: function(contact) {
-        this.firebaseRef = new Firebase('https://console.firebase.google.com/project/contactlist-4c6a5/database/data');
+        this.firebaseRef = new Firebase('https://contactlist-4c6a5.firebaseio.com/ContactList');
         this.firebaseRef.push({
             contact:contact
         });
     },
     getContacts: function() {
-        this.firebaseRef = new Firebase('https://console.firebase.google.com/project/contactlist-4c6a5/database/data');
+        this.firebaseRef = new Firebase('https://contactlist-4c6a5.firebaseio.com/ContactList');
         this.firebaseRef.once("value", function(snapshot) {
             var contacts = [];
             snapshot.forEach(function(childSnapshot) {
@@ -21,7 +21,7 @@ module.exports = {
                 }
                 contacts.push(contact);
                 AppActions.receiveContacts(contacts);
-            })
+            });
         });
     }
 }
