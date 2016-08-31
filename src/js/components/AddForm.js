@@ -6,7 +6,7 @@ var AppStore = require('../stores/AppStore');
 var AddForm = React.createClass({
     render: function() {
         return (
-            <div className='well'>
+            <div className='well container'>
               <h3>Add Contact</h3>
               <form>
                   <div className='form-group'>
@@ -32,7 +32,7 @@ var AddForm = React.createClass({
             email: this.refs.email.value.trim()
         }
 
-        AppActions.saveContact(contact); 
+        AppActions.saveContact(contact);
     }
 });
 

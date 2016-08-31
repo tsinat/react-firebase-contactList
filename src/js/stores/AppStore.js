@@ -12,7 +12,7 @@ var AppStore = assign({}, EventEmitter.prototype, {
     saveContact: function(contact) {
         _contacts.push(contact);
     },
-    getContact: function() {
+    getContacts: function() {
         return _contacts;
     },
     setContacts: function(contacts) {

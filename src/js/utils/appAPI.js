@@ -20,6 +20,7 @@ module.exports = {
                     email: childSnapshot.val().contact.email
                 }
                 contacts.push(contact);
+                console.log(contacts);
                 AppActions.receiveContacts(contacts);
             });
         });
