@@ -9,15 +9,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-      "browserify": "*",
-      "flux": "*",
-      "gulp": "*",
-      "reactify": "*",
-      "vinyl-source-stream": "*",
-      "object-assign": "*"
+    "browserify": "*",
+    "flux": "*",
+    "gulp": "*",
+    "reactify": "*",
+    "vinyl-source-stream": "*",
+    "object-assign": "*"
   },
   "dependencies": {
-      "react": "^0.14.7",
-      "react-dom": "^0.14.7"
+    "firebase": "^3.3.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   }
 }
