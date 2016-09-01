@@ -6,25 +6,31 @@ var AppActions = {
         AppDispatcher.handleViewAction({
             actionType: AppConstants.SAVE_CONTACT,
             contact:contact
-        })
+        });
     },
     receiveContact: function(contacts) {
         AppDispatcher.handleViewAction({
             actionType: AppConstants.RECEIVE_CONTACTS,
             contacts:contacts
-        })
+        });
     },
     removeContact: function(contactId){
         AppDispatcher.handleViewAction({
             actionType: AppConstants.REMOVE_CONTACTS,
             contactId:contactId
-        })
+        });
     },
     editContact: function(contact) {
         AppDispatcher.handleViewAction({
             actionType: AppConstants.EDIT_CONTACT,
             contact: contact
-        })
+        });
+    },
+    updateContact: function(contact) {
+        AppDispatcher.handleViewAction({
+            actionType: AppConstants.UPDATE_CONTACT,
+            contact: contact
+        });
     }
 
 }

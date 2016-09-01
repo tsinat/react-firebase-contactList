@@ -7,6 +7,7 @@ var AppAPI = require('../utils/appAPI.js');
 var CHANGE_EVENT = 'change';
 
 var _contacts = [];
+var _contact_to_edit = [];
 
 var AppStore = assign({}, EventEmitter.prototype, {
     saveContact: function(contact) {
@@ -21,6 +22,20 @@ var AppStore = assign({}, EventEmitter.prototype, {
     removeContact: function(contactId) {
         var index = _contacts.findIndex(x => x.id ===contactId);
         _contacts.splice(index, 1);
+    },
+    setContactToEdit: function(contact) {
+        _contact_to_edit = contact;
+    },
+    updateContact: function(contact) {
+        for(var i=0; i< _contacts.length; i++) {
+            if(_contacts[i].id == contact.id) {
+                _contacts.splice(i, 1);
+                _contacts.push(contact);
+            }
+        }
+    },
+    getContactToEdit: function() {
+        return _contact_to_edit ;
     },
     emitChange: function() {
         this.emit(CHANGE_EVENT);
@@ -64,11 +79,18 @@ AppDispatcher.register(function(payload) {
             AppStore.emit(CHANGE_EVENT);
             break;
         case AppConstants.EDIT_CONTACT:
-            console.log('Editing Contacts...');
             // store remove
-            AppStore.editContact(action.contact);
-            //Remove from API
-            AppAPI.editContact(action.contact);
+            AppStore.setContactToEdit(action.contact);
+
+            //Emit change
+            AppStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.UPDATE_CONTACTS:
+            console.log('updating Contacts...');
+            // store update
+            AppStore.updateContact(action.contactId);
+            //update from API
+            AppAPI.updateContact(action.contactId);
             //Emit change
             AppStore.emit(CHANGE_EVENT);
             break;
